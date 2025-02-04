@@ -80,6 +80,7 @@ public class SocialMediaController {
         }
 
         //get localhost:8080/messages/{message_id}
+        @GetMapping("/messages/{message_id}")
         public ResponseEntity<Message> getSingleMessage(@PathVariable("message_id") int message_id){
             Optional<Message> optionalMessage = messageService.getMessageById(message_id);
             if(optionalMessage.isPresent()){
@@ -90,7 +91,7 @@ public class SocialMediaController {
         }
 
         //patch localhost:8080/messages/{message_id}
-        @PatchMapping("/message/{message_id}")
+        @PatchMapping("/messages/{message_id}")
         public ResponseEntity<Integer> updateMessage(@RequestBody Message requestbody,@PathVariable("message_id") int messageId){
             int rowsUpdated = messageService.patchMessage(requestbody,messageId);
             if (rowsUpdated >0){
@@ -101,7 +102,7 @@ public class SocialMediaController {
         }
 
         //delete localhost:8080/message/{message_id}
-        @DeleteMapping("/message/{message_id}")
+        @DeleteMapping("/messages/{message_id}")
         public ResponseEntity<Integer> deleteAccountMessage(@PathVariable("message_id") int messageId){
             int rowsUpdated = messageService.deleteMessage(messageId);
             if(rowsUpdated>0){
