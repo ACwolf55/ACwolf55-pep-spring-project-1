@@ -39,7 +39,7 @@ public class SocialMediaController {
         public ResponseEntity<Account> register(@RequestBody Account requestbody){
 
             Account newAccount = accountService.register(requestbody);
-            if(newAccount=null){
+            if(newAccount==null){
                 return ResponseEntity.status(HttpStatus.CONFLICT).build();
             }else{
                 return ResponseEntity.ok(newAccount);

@@ -25,7 +25,7 @@ public class AccountService {
 
     public Account register(Account account){
         String username= account.getUsername();
-        boolean userExists = accountRepository.existByUsername(username);
+        boolean userExists = accountRepository.existsByUsername(username);
         if(userExists){
             return null;
         }
